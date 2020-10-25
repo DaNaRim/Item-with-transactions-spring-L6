@@ -2,6 +2,7 @@ package com.service;
 
 import com.DAO.ItemDAO;
 import com.exception.BadRequestException;
+import com.exception.InternalServerException;
 import com.exception.ObjectNotFoundException;
 import com.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class ItemServiceImpl implements ItemService {
         this.itemDAO = itemDAO;
     }
 
-    public Item save(Item item) throws BadRequestException {
+    public Item save(Item item) throws BadRequestException, InternalServerException {
         try {
             validateItem(item);
             itemDAO.checkItemName(item.getName());
@@ -26,11 +27,11 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
-    public Item findById(Long id) throws ObjectNotFoundException {
+    public Item findById(Long id) throws ObjectNotFoundException, InternalServerException {
         return itemDAO.findById(id);
     }
 
-    public Item update(Item item) throws BadRequestException, ObjectNotFoundException {
+    public Item update(Item item) throws BadRequestException, ObjectNotFoundException, InternalServerException {
         try {
             validateUpdate(item);
 
@@ -40,11 +41,11 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
-    public void delete(Long id) throws ObjectNotFoundException {
+    public void delete(Long id) throws ObjectNotFoundException, InternalServerException {
         itemDAO.delete(findById(id));
     }
 
-    public void deleteByName(String name) throws BadRequestException {
+    public void deleteByName(String name) throws BadRequestException, InternalServerException {
         try {
             itemDAO.checkItemContainsName(name);
 
@@ -64,7 +65,8 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
-    private void validateUpdate(Item item) throws BadRequestException, ObjectNotFoundException {
+    private void validateUpdate(Item item)
+            throws BadRequestException, ObjectNotFoundException, InternalServerException {
 
         Item oldItem = findById(item.getId());
         validateItem(item);

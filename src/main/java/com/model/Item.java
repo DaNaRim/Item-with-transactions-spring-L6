@@ -12,20 +12,6 @@ public class Item {
     private Date lastUpdatedDate;
     private String description;
 
-    public Item() {
-    }
-
-    public Item(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public Item(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
     @Id
     @SequenceGenerator(name = "ITEM_SEQ", sequenceName = "ITEM_SEQ")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQ")

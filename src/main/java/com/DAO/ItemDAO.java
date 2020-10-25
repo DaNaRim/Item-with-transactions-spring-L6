@@ -1,6 +1,7 @@
 package com.DAO;
 
 import com.exception.BadRequestException;
+import com.exception.InternalServerException;
 import com.exception.ObjectNotFoundException;
 import com.model.Item;
 import org.springframework.stereotype.Repository;
@@ -8,17 +9,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ItemDAO {
 
-    Item save(Item item);
+    Item save(Item item) throws InternalServerException;
 
-    Item findById(Long id) throws ObjectNotFoundException;
+    Item findById(Long id) throws ObjectNotFoundException, InternalServerException;
 
-    Item update(Item item);
+    Item update(Item item) throws InternalServerException;
 
-    void delete(Item item);
+    void delete(Item item) throws InternalServerException;
 
-    void deleteByName(String name);
+    void deleteByName(String name) throws InternalServerException;
 
-    void checkItemName(String name) throws BadRequestException;
+    void checkItemName(String name) throws BadRequestException, InternalServerException;
 
-    void checkItemContainsName(String name) throws BadRequestException;
+    void checkItemContainsName(String name) throws BadRequestException, InternalServerException;
 }
