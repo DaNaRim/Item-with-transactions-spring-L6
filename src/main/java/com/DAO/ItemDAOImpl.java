@@ -15,11 +15,12 @@ import java.util.Date;
 @Transactional
 public class ItemDAOImpl implements ItemDAO {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     private static final String DELETE_BY_NAME_QUERY = "DELETE FROM ITEM WHERE NAME LIKE :name";
     private static final String CHECK_ITEM_NAME_QUERY = "SELECT COUNT(*) FROM ITEM WHERE NAME = :name";
     private static final String CHECK_ITEM_CONTAINS_NAME_QUERY = "SELECT COUNT(*) FROM ITEM WHERE NAME LIKE :name";
-    @PersistenceContext
-    private EntityManager entityManager;
 
     public Item save(Item item) throws InternalServerException {
         try {
