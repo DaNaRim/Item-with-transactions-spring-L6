@@ -35,7 +35,7 @@ public class ItemDAOImpl implements ItemDAO {
         }
     }
 
-    public Item findById(Long id) throws ObjectNotFoundException, InternalServerException {
+    public Item findById(long id) throws ObjectNotFoundException, InternalServerException {
         try {
             Item item = entityManager.find(Item.class, id);
 

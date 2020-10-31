@@ -11,11 +11,11 @@ public interface ItemService {
 
     Item save(Item item) throws BadRequestException, InternalServerException;
 
-    Item findById(Long id) throws ObjectNotFoundException, InternalServerException;
+    Item findById(long id) throws ObjectNotFoundException, InternalServerException;
 
     Item update(Item item) throws BadRequestException, ObjectNotFoundException, InternalServerException;
 
-    void delete(Long id) throws ObjectNotFoundException, InternalServerException;
+    void delete(long id) throws ObjectNotFoundException, InternalServerException;
 
     void deleteByName(String name) throws BadRequestException, InternalServerException;
 }

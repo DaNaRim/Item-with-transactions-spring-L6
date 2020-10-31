@@ -11,7 +11,7 @@ public interface ItemDAO {
 
     Item save(Item item) throws InternalServerException;
 
-    Item findById(Long id) throws ObjectNotFoundException, InternalServerException;
+    Item findById(long id) throws ObjectNotFoundException, InternalServerException;
 
     Item update(Item item) throws InternalServerException;
 

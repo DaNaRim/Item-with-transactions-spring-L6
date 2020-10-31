@@ -27,7 +27,7 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
-    public Item findById(Long id) throws ObjectNotFoundException, InternalServerException {
+    public Item findById(long id) throws ObjectNotFoundException, InternalServerException {
         return itemDAO.findById(id);
     }
 
@@ -41,7 +41,7 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
-    public void delete(Long id) throws ObjectNotFoundException, InternalServerException {
+    public void delete(long id) throws ObjectNotFoundException, InternalServerException {
         itemDAO.delete(findById(id));
     }
 

@@ -40,7 +40,7 @@ public class ItemController {
 
     @GetMapping(value = "/findById/{id}", produces = "text/plain")
     public @ResponseBody
-    ResponseEntity<String> findById(@PathVariable Long id) {
+    ResponseEntity<String> findById(@PathVariable long id) {
         try {
             itemService.findById(id);
 
@@ -75,7 +75,7 @@ public class ItemController {
 
     @DeleteMapping(value = "/delete/{id}", produces = "text/plain")
     public @ResponseBody
-    ResponseEntity<String> delete(@PathVariable Long id) {
+    ResponseEntity<String> delete(@PathVariable long id) {
         try {
             itemService.delete(id);
 
