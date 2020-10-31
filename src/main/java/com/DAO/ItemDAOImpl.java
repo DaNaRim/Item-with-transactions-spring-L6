@@ -30,8 +30,8 @@ public class ItemDAOImpl implements ItemDAO {
             entityManager.persist(item);
             return item;
         } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-            throw new InternalServerException(e.getMessage());
+            throw new InternalServerException("Something went wrong while trying to save item with name "
+                    + item.getName() + " : " + e.getMessage());
         }
     }
 
@@ -45,8 +45,8 @@ public class ItemDAOImpl implements ItemDAO {
 
             return item;
         } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-            throw new InternalServerException(e.getMessage());
+            throw new InternalServerException("Something went wrong while trying to find item with id " + id + " : "
+                    + e.getMessage());
         }
     }
 
@@ -58,8 +58,8 @@ public class ItemDAOImpl implements ItemDAO {
             return entityManager.merge(item);
 
         } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-            throw new InternalServerException(e.getMessage());
+            throw new InternalServerException("Something went wrong while trying to update item with id " + item.getId()
+                    + " : " + e.getMessage());
         }
     }
 
@@ -68,8 +68,8 @@ public class ItemDAOImpl implements ItemDAO {
             entityManager.remove(entityManager.merge(item));
 
         } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-            throw new InternalServerException(e.getMessage());
+            throw new InternalServerException("Something went wrong while trying to delete item with id " + item.getId()
+                    + " : " + e.getMessage());
         }
     }
 
@@ -80,8 +80,8 @@ public class ItemDAOImpl implements ItemDAO {
                     .executeUpdate();
 
         } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-            throw new InternalServerException(e.getMessage());
+            throw new InternalServerException("Something went wrong while trying to delete items with name " + name
+                    + " : " + e.getMessage());
         }
     }
 
@@ -95,8 +95,8 @@ public class ItemDAOImpl implements ItemDAO {
                 throw new BadRequestException("item with name " + name + " already exists");
             }
         } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-            throw new InternalServerException(e.getMessage());
+            throw new InternalServerException("Something went wrong while trying to check item name " + name + " : "
+                    + e.getMessage());
         }
     }
 
@@ -110,8 +110,8 @@ public class ItemDAOImpl implements ItemDAO {
                 throw new BadRequestException("missed items that contains name " + name);
             }
         } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-            throw new InternalServerException(e.getMessage());
+            throw new InternalServerException("Something went wrong while trying to check are there any items with " +
+                    "name " + name + " : " + e.getMessage());
         }
     }
 }
