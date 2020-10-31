@@ -15,7 +15,6 @@ public class Item {
     @Id
     @SequenceGenerator(name = "ITEM_SEQ", sequenceName = "ITEM_SEQ")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQ")
-    @Column(name = "ID")
     public Long getId() {
         return id;
     }

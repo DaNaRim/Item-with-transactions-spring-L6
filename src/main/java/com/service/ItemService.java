@@ -13,7 +13,7 @@ public interface ItemService {
 
     Item findById(long id) throws ObjectNotFoundException, InternalServerException;
 
-    Item update(Item item) throws BadRequestException, ObjectNotFoundException, InternalServerException;
+    Item update(Item item) throws ObjectNotFoundException, BadRequestException, InternalServerException;
 
     void delete(long id) throws ObjectNotFoundException, InternalServerException;
 

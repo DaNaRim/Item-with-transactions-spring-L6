@@ -23,7 +23,7 @@ public class ItemServiceImpl implements ItemService {
 
             return itemDAO.save(item);
         } catch (BadRequestException e) {
-            throw new BadRequestException("Cant save item " + item.getName() + " : " + e.getMessage());
+            throw new BadRequestException("Can`t save item " + item.getName() + " : " + e.getMessage());
         }
     }
 
@@ -31,13 +31,13 @@ public class ItemServiceImpl implements ItemService {
         return itemDAO.findById(id);
     }
 
-    public Item update(Item item) throws BadRequestException, ObjectNotFoundException, InternalServerException {
+    public Item update(Item item) throws ObjectNotFoundException, BadRequestException, InternalServerException {
         try {
             validateUpdate(item);
 
             return itemDAO.update(item);
         } catch (BadRequestException e) {
-            throw new BadRequestException("Cant update item " + item.getId() + " : " + e.getMessage());
+            throw new BadRequestException("Can`t update item " + item.getId() + " : " + e.getMessage());
         }
     }
 
@@ -51,7 +51,7 @@ public class ItemServiceImpl implements ItemService {
 
             itemDAO.deleteByName(name);
         } catch (BadRequestException e) {
-            throw new BadRequestException("Cant delete items with name " + name + " : " + e.getMessage());
+            throw new BadRequestException("Can`t delete items with name " + name + " : " + e.getMessage());
         }
     }
 
@@ -61,12 +61,12 @@ public class ItemServiceImpl implements ItemService {
             throw new BadRequestException("name length must be <= 50");
         }
         if (item.getDescription().length() > 200) {
-            throw new BadRequestException("name description must be <= 200");
+            throw new BadRequestException("description length must be <= 200");
         }
     }
 
     private void validateUpdate(Item item)
-            throws BadRequestException, ObjectNotFoundException, InternalServerException {
+            throws ObjectNotFoundException, BadRequestException, InternalServerException {
 
         Item oldItem = findById(item.getId());
         validateItem(item);

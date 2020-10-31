@@ -40,7 +40,7 @@ public class ItemDAOImpl implements ItemDAO {
             Item item = entityManager.find(Item.class, id);
 
             if (item == null) {
-                throw new ObjectNotFoundException("missed item with id " + id);
+                throw new ObjectNotFoundException("Missed item with id " + id);
             }
 
             return item;
